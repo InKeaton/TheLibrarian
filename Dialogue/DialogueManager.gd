@@ -91,19 +91,6 @@ func chooseOption() -> void:
 	# aggiorniamo il dialogo
 	updateDialogue()
 
-# TEMPORANEA - Salva una variabile segnalata dal dialogo
-func saveVariable(answer) -> void:
-	_sta_bene = str2var(answer)
-
-# TEMPORANEA - controlla il valore di una variabile in un if
-func checkIf(variable) -> void:
-	if self.get(variable):
-		_section_id = _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["IF"][1]
-	else:
-		_section_id = _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["IF"][2]
-	_message_id = 0
-	updateDialogue()
-	
 func _on_message_completed() -> void:
 	# quando un messagio ha finito di essere stato scritto,
 	# permettiamo al giocatore di andare avanti

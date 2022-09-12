@@ -7,19 +7,19 @@
 
         "> Bene, grazie :D" : {
             "MESSAGES" : ["Oh, meno male"],
-            "SIGNAL" : ["_sta_bene", "1"],
+            "SIGNAL" : ["_sta_bene", "0"],
             "JUMP_TO" : "end"
         },
 
         "> Eh, come al solito..." : {
             "MESSAGES" : ["Oh...{p=0.5} Beh, spero che tu stia bene di solito..."],
-            "SIGNAL" : ["_sta_bene", "1"],
+            "SIGNAL" : ["_sta_bene", "0"],
             "JUMP_TO" : "end"
         },
 
         "> Beh, non molto bene..." : {
             "MESSAGES" : ["Oh, mi spiace"],
-            "SIGNAL" : ["_sta_bene", "0"],
+            "SIGNAL" : ["_sta_bene", "1"],
             "JUMP_TO" : "end"
         },
 
