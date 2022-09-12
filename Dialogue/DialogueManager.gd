@@ -109,6 +109,12 @@ func _on_Player_can_talk(interlocutor):
 	# al dialogue manager e salvato. Funziona anche come bool per capire
 	# se possiamo far partire un dialogo
 	_current_interlocutor = interlocutor
+	# mostriamo l'icona per parlare quando necessario
+	if interlocutor:
+		$TalkIcon.set_position(interlocutor.position + interlocutor._bubble_pos)
+		$TalkIcon/Icon.visible = true
+	else : 
+		$TalkIcon/Icon.visible = false
 
 func _on_Player_change_choice(direction):
 	if _dialogue_status == CHOOSING:

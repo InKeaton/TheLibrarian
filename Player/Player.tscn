@@ -9,21 +9,21 @@ extents = Vector2( 35, 57.9167 )
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 25, 50 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 100, 50, 100 )
+region = Rect2( 0, 0, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 100, 50, 100 )
+region = Rect2( 50, 0, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 100, 50, 100 )
+region = Rect2( 100, 0, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 150, 100, 50, 100 )
+region = Rect2( 150, 0, 50, 100 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -45,27 +45,27 @@ region = Rect2( 150, 200, 50, 100 )
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 50, 100 )
+region = Rect2( 0, 100, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 50, 0, 50, 100 )
+region = Rect2( 50, 100, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 0, 50, 100 )
+region = Rect2( 100, 100, 50, 100 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 150, 0, 50, 100 )
+region = Rect2( 150, 100, 50, 100 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "up",
+"name": "down",
 "speed": 4.0
 }, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
@@ -78,9 +78,9 @@ animations = [ {
 "name": "still",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "down",
+"name": "up",
 "speed": 4.0
 } ]
 
