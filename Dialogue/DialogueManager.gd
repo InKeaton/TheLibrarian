@@ -33,6 +33,11 @@ signal dialogue_started()
 signal dialogue_ended()
 # indica che dobbiamo cambiare una scelta
 signal choice_changed(option)
+# invia al main una variabile da controllare
+signal check_if(variables)
+# imposta valore variabile in main
+signal set_var(var_name)
+
 
 func initializeDialogue() -> void:
 	# Invia il seganle di inizio dialogo 
@@ -147,7 +152,7 @@ func _on_Player_is_answering():
 			# se no, passiamo alla prossima sezione indicata
 			else: 
 				if _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id].has("SIGNAL"):
-					saveVariable(_current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["SIGNAL"][1])
+					emit_signal("set_var", _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["SIGNAL"])
 				# mostriamo una scelta
 				if _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id].has("CHOICE"):
 					initializeChoice()
@@ -158,7 +163,8 @@ func _on_Player_is_answering():
 					updateDialogue()
 				# Controlliamo una variabile nei salvataggi, e saltaimo a diverse sezioni in base al risultato
 				elif _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id].has("IF"):
-					checkIf(_current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["IF"][0][0])
+					emit_signal("check_if", _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["IF"][0])
+					_dialogue_status = LISTENING
 				# concludiamo il dialogo
 				elif _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id].has("END_DIALOGUE"):
 					endDialogue()
@@ -166,4 +172,7 @@ func _on_Player_is_answering():
 		elif _dialogue_status == CHOOSING && _next_section != -1:
 			chooseOption()
 
-			
+func _on_main_if_result(result):
+	_section_id = _current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["IF"][1][result]
+	_dialogue_status = NODDING
+	updateDialogue()

@@ -32,7 +32,7 @@
     "1" : {
         "start" : {
             "MESSAGES" : [],
-            "IF" : [["_sta_bene"], "bene", "male"] 
+            "IF" : [["_sta_bene"], ["bene", "male"]] 
         },
         "male" : {
             "MESSAGES" : ["Beh, mi spiace che tu sia triste, ma...{p=0.7} non ho altro da dirti...", "[wave amp=50 freq=2] V A  V I A . . .[/wave]"],
