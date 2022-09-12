@@ -66,7 +66,7 @@ func endDialogue() -> void:
 func initializeChoice() -> void:
 	# creiamo una choicebox
 	_choice_box = CHOICE_SCENE.instance()
-	get_tree().get_root().add_child(_choice_box)
+	get_tree().get_root().get_node("main/HUD").add_child(_choice_box)
 	self.connect("choice_changed", _choice_box, "_on_choice_changed")
 	# impostiamo le possibili scelte
 	_choice_box.set_choices(_current_interlocutor._dialogue[_current_interlocutor._timeline_id][_section_id]["CHOICE"])
