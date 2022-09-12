@@ -20,7 +20,7 @@ texture = ExtResource( 1 )
 position = Vector2( 184, 183 )
 
 [node name="NPC2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 185, 443 )
+position = Vector2( 184, 443 )
 
 [node name="DialogueManager" parent="." instance=ExtResource( 6 )]
 

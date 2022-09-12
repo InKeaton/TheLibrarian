@@ -12,6 +12,7 @@ func set_choices(choices : Array) -> void:
 	for choice in choices:
 		buttons.append(OPTION.instance())
 		get_tree().get_root().get_node("main/HUD").add_child(buttons[id])
+		# yo
 		buttons[id].set_position($Background.rect_position + Vector2((15 + (id*15)), (15 + (id*20))))
 		buttons[id].text = choice
 		id += 1
