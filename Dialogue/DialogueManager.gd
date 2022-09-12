@@ -39,7 +39,7 @@ func initializeDialogue() -> void:
 	emit_signal("dialogue_started")
 	# inizializza la variabile dialogo
 	_dialogue_box = DIALOGUE_SCENE.instance()
-	get_tree().get_root().add_child(_dialogue_box)
+	get_tree().get_root().get_node("main/HUD").add_child(_dialogue_box)
 	_dialogue_box.connect("message_completed", self,"_on_message_completed")
 
 func updateDialogue() -> void:

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal health_changed(new_health)
 
