@@ -10,6 +10,8 @@ extends KinematicBody2D
 export var speed = 400
 # vita del giocatore
 var _health = 500
+# variabile che indica che stiamo sprintando
+var _sprint = 0
 # variabili temporanee per implementare il dialogo
 var _is_in_dialogue = false
 # segnale variazione salute
@@ -47,6 +49,13 @@ func computeMovement(velocity):
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 		# $Speakbox.rotation_degrees = 180
+	# determina se dobbiamo aumentare la velocità
+	if Input.is_action_just_pressed("sprint"):
+		_sprint += 1
+	if Input.is_action_just_released("sprint"):
+		_sprint -= 1
+	# aumenta la velocità se sprintiamo
+	speed = 400 + _sprint * 200
 	# normalizza il movimento in caso di movimento diagonale
 	if velocity.length() > 0: 
 		velocity = velocity.normalized() * speed

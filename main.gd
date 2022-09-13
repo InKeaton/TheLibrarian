@@ -9,8 +9,6 @@ func _ready():
 	jsonfile = File.new()
 	jsonfile.open(SAVE_PATH, File.READ_WRITE)
 	save_data = parse_json(jsonfile.get_as_text())
-	print(save_data)
-
 
 func _on_DialogueManager_check_if(variables):
 	var result = 1
