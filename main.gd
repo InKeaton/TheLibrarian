@@ -19,5 +19,5 @@ func _on_DialogueManager_check_if(variables):
 	emit_signal("if_result", result)
 
 
-func _on_DialogueManager_set_var(var_name):
-	save_data["DIALOGUE_VARS"][var_name[0]] = var_name[1]
+func _on_DialogueManager_set_var(var_data):
+	save_data["DIALOGUE_VARS"][var_data[0]] = var_data[1]

@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+export (Resource) var data 
 # posizione bolla di dialogo
 export var _bubble_pos = Vector2(-55, -80)
 # dizionario, conterrà il dialogo

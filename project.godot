@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "PauseCalculator",
 "language": "GDScript",
 "path": "res://Dialogue/PauseCalculator.gd"
+}, {
+"base": "Resource",
+"class": "npc_data",
+"language": "GDScript",
+"path": "res://NPC_data.gd"
 } ]
 _global_script_class_icons={
 "Dialogue": "",
 "DialogueVoicePlayer": "",
 "Pause": "",
-"PauseCalculator": ""
+"PauseCalculator": "",
+"npc_data": ""
 }
 
 [application]
