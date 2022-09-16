@@ -7,15 +7,36 @@ extents = Vector2( 16, 16 )
 
 [node name="tileset" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="porta_chiusa" type="Sprite" parent="."]
 position = Vector2( 78, -53 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 262, 0, 32, 32 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+[node name="StaticBody2D" type="StaticBody2D" parent="porta_chiusa"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porta_chiusa/StaticBody2D"]
 position = Vector2( 0, 3.8147e-06 )
 shape = SubResource( 1 )
+
+[node name="tappeto_rosso" type="Sprite" parent="."]
+position = Vector2( 250, -43 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 288, 48, 48, 48 )
+
+[node name="tappeto_blu" type="Sprite" parent="."]
+position = Vector2( 412, -44 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 336, 48, 48, 48 )
+
+[node name="pavimento_legno_scuro" type="Sprite" parent="."]
+position = Vector2( 539, -44 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 496, 0, 16, 16 )
