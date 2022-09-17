@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "npc_data",
 "language": "GDScript",
-"path": "res://NPC_data.gd"
+"path": "res://_class_prototypes/NPC_data.gd"
 } ]
 _global_script_class_icons={
 "Dialogue": "",

@@ -13,7 +13,6 @@ func _ready():
 func _on_DialogueManager_check_if(variables):
 	var result = 1
 	for var_name in variables:
-		print(var_name)
 		if !str2var(save_data["DIALOGUE_VARS"][var_name]):
 			result = 0
 	emit_signal("if_result", result)

@@ -7,7 +7,7 @@
 [ext_resource path="res://main.gd" type="Script" id=5]
 [ext_resource path="res://Dialogue/DialogueManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Props/Damage.tscn" type="PackedScene" id=7]
-[ext_resource path="res://_data/Madonna_data.tres" type="Resource" id=8]
+[ext_resource path="res://NPC/Madonna_data.tres" type="Resource" id=8]
 
 [node name="main" type="Node"]
 script = ExtResource( 5 )
@@ -26,6 +26,7 @@ data = ExtResource( 8 )
 
 [node name="NPC2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 443 )
+data = ExtResource( 8 )
 
 [node name="DialogueManager" parent="." instance=ExtResource( 6 )]
 

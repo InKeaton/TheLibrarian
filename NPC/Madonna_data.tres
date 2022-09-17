@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://_class_prototypes/NPC_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+spritesheet_path = "res://_sprites/chrctrs/MadonnaStill.png"
+dialogue_path = "res://_data/madonna.json"
+timeline_id = "0"
+bubble_pos = Vector2( -55, -80 )
