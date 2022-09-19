@@ -144,5 +144,3 @@ func _on_DialogueManager_dialogue_ended():
 	# il movimento 
 	_is_in_dialogue = false
 
-#puzzi
-
