@@ -138,6 +138,7 @@ func _on_Speakbox_body_exited(body):
 func _on_DialogueManager_dialogue_started():
 	# quando iniza una dialogo, viene comunicato bloccando il movimento
 	_is_in_dialogue = true
+	$AnimatedSprite.stop()
 
 func _on_DialogueManager_dialogue_ended():
 	# quanto un dialogo è finito, viene comunicato al giocatore, facendo ripartire 

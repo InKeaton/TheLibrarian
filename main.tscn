@@ -18,7 +18,7 @@ extents = Vector2( 24.8333, 8.08333 )
 [sub_resource type="Resource" id=2]
 script = ExtResource( 11 )
 spritesheet_path = "res://_sprites/chrctrs/EugeniaStill.png"
-dialogue_path = "res://_data/madonna.json"
+dialogue_path = "res://_data/eugenia.json"
 timeline_id = "0"
 bubble_pos = Vector2( -55, -60 )
 
@@ -78,7 +78,6 @@ scale = Vector2( 1.21905, 1.25 )
 texture = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-scale = Vector2( 1, 1 )
 
 [node name="Madonna" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 183 )
