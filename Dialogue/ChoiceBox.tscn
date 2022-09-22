@@ -6,14 +6,18 @@
 [node name="ChoiceBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 7.0
+margin_right = -1.0
+margin_bottom = 7.0
 script = ExtResource( 3 )
 
 [node name="Background" type="NinePatchRect" parent="."]
 self_modulate = Color( 0.905882, 0.709804, 0.709804, 1 )
-margin_left = 661.0
-margin_top = 493.0
-margin_right = 1011.0
-margin_bottom = 593.0
+margin_left = 647.0
+margin_top = 477.0
+margin_right = 1023.0
+margin_bottom = 585.0
 grow_horizontal = 2
 texture = ExtResource( 2 )
 patch_margin_left = 8

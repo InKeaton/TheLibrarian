@@ -14,7 +14,7 @@ func set_choices(choices : Array) -> void:
 		get_tree().get_root().get_node("main/HUD").add_child(buttons[id])
 		# yo
 		buttons[id].set_position($Background.rect_position + Vector2((15 + (id*15)), (15 + (id*20))))
-		buttons[id].text = choice
+		buttons[id].set_text(choice)
 		id += 1
 
 func destroy():
