@@ -2,15 +2,15 @@
     "0" : {
         "start" :  {
             "MESSAGES" : ["ue.", "Com'è?"],
-            "CHOICE" : ["> Tutt'apposto fre", "> Solita roba"]
+            "CHOICE" : ["Tutt'apposto fre", "Solita roba"]
         },
 
-        "> Tutt'apposto fre" : {
+        "Tutt'apposto fre" : {
             "MESSAGES" : ["Ah meno male..."],
             "JUMP_TO" : "end"
         },
 
-        "> Solita roba" : {
+        "Solita roba" : {
             "MESSAGES" : ["Beh, bello schifo"],
             "JUMP_TO" : "end"
         },

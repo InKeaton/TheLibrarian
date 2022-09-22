@@ -13,7 +13,7 @@ func set_choices(choices : Array) -> void:
 		buttons.append(OPTION.instance())
 		get_tree().get_root().get_node("main/HUD").add_child(buttons[id])
 		# yo
-		buttons[id].set_position($Background.rect_position + Vector2((15 + (id*15)), (15 + (id*20))))
+		buttons[id].set_position($Background.rect_position + Vector2((35 + (id*15)), (15 + (id*20))))
 		buttons[id].set_text(choice)
 		id += 1
 
@@ -25,6 +25,6 @@ func destroy():
 func _on_choice_changed(option):
 	for choice in buttons:
 		choice.pressed = false
-	buttons[option].pressed = true
+	buttons[option].grab_focus()
 	
 		
