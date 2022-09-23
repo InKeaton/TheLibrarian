@@ -1,9 +1,15 @@
 extends Node
 
-enum {
-	NODDING, LISTENING, CHOOSING
-}
+# D I A L O G U E   M A N A G E R --------------------|
 
+# Nodo il cui scopo è gestire il dialogo in tutte le sue forme, dall'
+# aggiornamento delle caselle di dialogo e scelta, alla gestione della posizione 
+# dell'indicatore di inizio dialogo (Bubble)
+
+# V A R I A B I L I --------------------|
+
+# stati del dialogo
+enum { NODDING, LISTENING, CHOOSING }
 # dialogo
 const DIALOGUE_SCENE := preload("res://Dialogue/Dialogue.tscn")
 # scelta
@@ -36,7 +42,9 @@ signal check_if(variables)
 # imposta valore variabile in main
 signal set_var(var_data)
 
+# F U N Z I O N I --------------------|
 
+# inizializza la dialogue box
 func initializeDialogue() -> void:
 	# Invia il seganle di inizio dialogo 
 	emit_signal("dialogue_started")
@@ -45,14 +53,15 @@ func initializeDialogue() -> void:
 	get_tree().get_root().get_node("main/HUD").add_child(_dialogue_box)
 	_dialogue_box.connect("message_completed", self,"_on_message_completed")
 
+# aggiorna il messaggio del dialogo e le variabili relative
 func updateDialogue() -> void:
-	# aggiorna il messaggio del dialogo e le variabili relative
 	_dialogue_box.update_message(_current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["MESSAGES"][_message_id])
 	_dialogue_status = LISTENING
 	_message_id += 1
 
+# conclude il dialogo
 func endDialogue() -> void:
-	# elimina il dialogo
+	# elimina la dialogue box
 	_dialogue_box.disconnect("message_completed", self,"_on_message_completed")
 	_dialogue_box.queue_free()
 	_dialogue_box = null
@@ -66,6 +75,7 @@ func endDialogue() -> void:
 	# invia il segnale di fine dialogo
 	emit_signal("dialogue_ended")
 
+# inizializza la choice box
 func initializeChoice() -> void:
 	# creiamo una choicebox
 	_choice_box = CHOICE_SCENE.instance()
@@ -75,7 +85,8 @@ func initializeChoice() -> void:
 	_choice_box.set_choices(_current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["CHOICE"])
 	# impostiamo lo stato di scelta
 	_dialogue_status = CHOOSING
-	
+
+# conferma la scelta
 func chooseOption() -> void:
 	# impostiamo la prossima sezione
 	_section_id = _current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["CHOICE"][_next_section]
@@ -89,11 +100,13 @@ func chooseOption() -> void:
 	# aggiorniamo il dialogo
 	updateDialogue()
 
+# S E G N A L I --------------------|
+
+# permette al giocatore di andare avanti quando finisce il messaggio
 func _on_message_completed() -> void:
-	# quando un messagio ha finito di essere stato scritto,
-	# permettiamo al giocatore di andare avanti
 	_dialogue_status = NODDING
 
+# permettiamo l'inizio del dialogo
 func _on_Player_can_talk(interlocutor):
 	# quando il giocatore è nei pressi di un NPC questi viene inviato
 	# al dialogue manager e salvato. Funziona anche come bool per capire
@@ -106,14 +119,15 @@ func _on_Player_can_talk(interlocutor):
 	else : 
 		$TalkIcon/Icon.visible = false
 
+# cambiamo l'opzione attuale in una scelta
 func _on_Player_change_choice(direction):
 	if _dialogue_status == CHOOSING:
 		# sposta opzione a sinistra
 		if direction == "LEFT" &&_next_section > 0: 
 			_next_section -= 1
 			emit_signal("choice_changed", _next_section)
-		elif direction == "LEFT" && _next_section > 0: 
-			_next_section = 0 
+		elif direction == "LEFT" && _next_section == 0: 
+			_next_section = _current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["CHOICE"].size() - 1
 			emit_signal("choice_changed", _next_section)
 			# sposta opzione a destra
 		elif direction == "RIGHT" && _next_section < _current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["CHOICE"].size() - 1: 
@@ -123,6 +137,7 @@ func _on_Player_change_choice(direction):
 			_next_section = 0 
 			emit_signal("choice_changed", _next_section)
 
+# impostiamo il nuovo messaggio, sulla base delle variabili
 func _on_Player_is_answering():
 	# se il giocatore è nelle vicinanze di un NPC
 	if _current_interlocutor:
@@ -157,7 +172,8 @@ func _on_Player_is_answering():
 		elif _dialogue_status == CHOOSING && _next_section != -1:
 			chooseOption()
 
-func _on_main_if_result(result):
+# cambiamo sezione sulla base del risultato di un IF del dialogo
+func _on_SaveManager_if_result(result):
 	_section_id = _current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["IF"][1][result]
 	_dialogue_status = NODDING
 	updateDialogue()

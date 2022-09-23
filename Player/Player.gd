@@ -1,8 +1,12 @@
 extends KinematicBody2D
 
-# TO DO
-# - ~collisioni~
-# - iterazione fra oggetti e speakbox
+# P L A Y E R --------------------|
+
+# player è sia il personaggio mosso sullo schermo, sia il modulo da cui
+# gestire l'input del giocatore.
+# In quanto tale, deve gestire il movimento del giocatore, le sue collisioni ed 
+# animazioni, oltre a gestire l'inizio di eventi determinati dal giocatore, come
+# dialoghi o menu
 
 # V A R I A B I L I --------------------|
 
@@ -26,7 +30,7 @@ signal change_choice(direction)
 
 # F U N Z I O N I ----------------------|
 
-# Called when the node enters the scene tree for the first time.
+# imposta le variabili iniziali
 func _ready():
 	# posizione iniziale
 	position.x = 600
@@ -35,20 +39,17 @@ func _ready():
 	$AnimatedSprite.animation = "down"
 	# invia la salute iniziale
 	emit_signal("health_changed", _health)
-	
+
+# calcola il moviemnto del giocatore, frame per frame
 func computeMovement(velocity):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-		# $Speakbox.rotation_degrees = 270
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-		# $Speakbox.rotation_degrees = 90
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-		# $Speakbox.rotation_degrees = 0
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-		# $Speakbox.rotation_degrees = 180
 	# determina se dobbiamo aumentare la velocità
 	if Input.is_action_just_pressed("sprint"):
 		_sprint += 1
@@ -61,6 +62,7 @@ func computeMovement(velocity):
 		velocity = velocity.normalized() * speed
 	return velocity
 
+# imposta l'animazione corrente
 func setAnimation(velocity):
 	# seleziona l'animazione corretta
 	if velocity.x > 0:
@@ -81,6 +83,7 @@ func setAnimation(velocity):
 	else: 
 		$AnimatedSprite.stop()
 
+# calcola le reazioni alle collisioni fisiche
 func computeCollisions():
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
@@ -96,7 +99,7 @@ func computeCollisions():
 			$AnimatedSprite.set_modulate(Color(1, 1, 1, 0.5))
 			print(_health)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# funzione principale che avviene una volta a frame
 func _process(delta):
 	# sezione dedicata al movimento	
 	if !_is_in_dialogue:
@@ -120,28 +123,29 @@ func _process(delta):
 		if Input.is_action_just_pressed("choice_left_up") : emit_signal("change_choice", "LEFT")
 		if Input.is_action_just_pressed("choice_right_down") : emit_signal("change_choice", "RIGHT")
 
+# S E G N A L I ----------------------|
+
+# alla fine degli eyeframes, fa tornare lo sprite normale
 func _on_EyeFrames_timeout():
-	# alla fine degli eyeframes, fa tornare lo sprite normale
 	$AnimatedSprite.set_modulate(Color(1, 1, 1))
 
+# in caso si possa parlare, invia l'interlocutore al DialogueManager
 func _on_Speakbox_body_entered(body):
-	# in caso si possa parlare, invia l'interlocutore al DialogueManager
 	if body.is_in_group("Character"):
-		print(body.name)
 		emit_signal("can_talk", body)
 
+# in caso non si possa più parlare, invia null al DialogueManager
 func _on_Speakbox_body_exited(body):
-	# in caso non si possa più parlare, invia null al DialogueManager
 	if body.is_in_group("Character"):
 		emit_signal("can_talk", null)
 
+# quando iniza una dialogo, viene comunicato, bloccando il movimento
 func _on_DialogueManager_dialogue_started():
-	# quando iniza una dialogo, viene comunicato bloccando il movimento
 	_is_in_dialogue = true
 	$AnimatedSprite.stop()
 
-func _on_DialogueManager_dialogue_ended():
-	# quanto un dialogo è finito, viene comunicato al giocatore, facendo ripartire 
+# quanto un dialogo è finito, viene comunicato al giocatore, facendo ripartire 
 	# il movimento 
+func _on_DialogueManager_dialogue_ended():
 	_is_in_dialogue = false
 

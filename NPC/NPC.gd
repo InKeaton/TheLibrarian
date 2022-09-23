@@ -1,10 +1,22 @@
 extends StaticBody2D
 
+# N P C --------------------|
+
+# l'NPC è un personaggio non giocante
+# Deve contenere tutti dati relativi al personaggio, come dialoghi e sprite, 
+# oltre al personaggio fisicamente presente
+# deve essere sviluppato tenendo in mente la logica della scalarità
+
+# V A R I A B I L I --------------------|
+
+# la risorsa NPC_Data che contiene i dati del personaggio
 export (Resource) var data 
 # dizionario, conterrà il dialogo
 var _dialogue = {}
 
-# Called when the node enters the scene tree for the first time.
+# F U N Z I O N I --------------------|
+
+# carica i dati del personaggio nel suo NPC_Data
 func _ready():
 	# carica spritesheet
 	$Sprite.texture = load(data.spritesheet_path)

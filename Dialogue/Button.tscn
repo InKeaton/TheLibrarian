@@ -11,8 +11,8 @@ font_data = ExtResource( 1 )
 [node name="Option" type="TextureButton"]
 margin_left = 384.0
 margin_top = 128.0
-margin_right = 494.0
-margin_bottom = 148.0
+margin_right = 642.0
+margin_bottom = 185.0
 toggle_mode = true
 pressed = true
 script = ExtResource( 2 )
