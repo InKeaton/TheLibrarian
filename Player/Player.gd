@@ -100,7 +100,7 @@ func computeCollisions():
 			print(_health)
 
 # funzione principale che avviene una volta a frame
-func _process(delta):
+func _process(_delta):
 	# sezione dedicata al movimento	
 	if !_is_in_dialogue:
 		# velocity è un vettore che rappresenta la velocità attuale del giocatore

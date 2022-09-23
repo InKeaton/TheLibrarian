@@ -55,6 +55,7 @@ func initializeDialogue() -> void:
 	get_tree().get_root().get_node("main/HUD").add_child(_dialogue_box)
 	_dialogue_box.connect("message_completed", self,"_on_message_completed")
 	_dialogue_box.show()
+	yield(get_tree().create_timer(.15), "timeout")
 
 # aggiorna il messaggio del dialogo e le variabili relative
 func updateDialogue() -> void:
@@ -64,8 +65,10 @@ func updateDialogue() -> void:
 
 # conclude il dialogo
 func endDialogue() -> void:
-	# elimina la dialogue box
+	# nasconde la dialogue box
 	_dialogue_box.hide()
+	yield(get_tree().create_timer(.15), "timeout")
+	# elimina la dialogue box
 	_dialogue_box.disconnect("message_completed", self,"_on_message_completed")
 	_dialogue_box.queue_free()
 	_dialogue_box = null
@@ -112,7 +115,7 @@ func _on_message_completed() -> void:
 
 # permettiamo l'inizio del dialogo
 func _on_Player_can_talk(interlocutor):
-	tween = create_tween()
+	tween = get_tree().create_tween()
 	# quando il giocatore è nei pressi di un NPC questi viene inviato
 	# al dialogue manager e salvato. Funziona anche come bool per capire
 	# se possiamo far partire un dialogo
@@ -120,9 +123,9 @@ func _on_Player_can_talk(interlocutor):
 	# mostriamo l'icona per parlare quando necessario
 	if interlocutor:
 		$TalkIcon.set_position(interlocutor.position + interlocutor.data.bubble_pos)
-		tween.tween_property($TalkIcon/Icon, "modulate", Color("ffffff"), 0.15)
+		tween.tween_property($TalkIcon, "modulate", Color("ffffff"), 0.15)
 	else : 
-		tween.tween_property($TalkIcon/Icon, "modulate", Color("00ffffff"), 0.15)
+		tween.tween_property($TalkIcon, "modulate", Color("00ffffff"), 0.15)
 
 # cambiamo l'opzione attuale in una scelta
 func _on_Player_change_choice(direction):

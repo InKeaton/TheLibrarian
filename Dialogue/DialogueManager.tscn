@@ -7,3 +7,8 @@
 script = ExtResource( 1 )
 
 [node name="TalkIcon" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 180.0
+margin_top = -41.0
+margin_right = -807.0
+margin_bottom = -604.0
