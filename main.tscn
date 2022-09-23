@@ -69,7 +69,7 @@ texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 337, 49, 46, 46 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource( 2 )]
 
 [node name="Madonna" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 183 )
@@ -88,7 +88,6 @@ position = Vector2( 905, 103 )
 
 [node name="SaveManager" parent="." instance=ExtResource( 1 )]
 
-[connection signal="can_talk" from="Player" to="HUD" method="_on_Player_can_talk"]
 [connection signal="can_talk" from="Player" to="DialogueManager" method="_on_Player_can_talk"]
 [connection signal="change_choice" from="Player" to="DialogueManager" method="_on_Player_change_choice"]
 [connection signal="health_changed" from="Player" to="HUD" method="_on_Player_health_changed"]

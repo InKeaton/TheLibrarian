@@ -2,17 +2,25 @@
 class_name Dialogue
 extends Control
 
-# variabili "onreay", inizializzate quando il nodo entra nell'albero
+# variabili "onready", inizializzate quando il nodo entra nell'albero
 onready var pause_calculator := get_node("PauseCalculator") as PauseCalculator
 onready var content := get_node("Content") as RichTextLabel
 onready var voice_player := get_node("DialogueVoicePlayer") as AudioStreamPlayer
 onready var type_timer := get_node("TypeTyper") as Timer
 onready var pause_timer := get_node("PauseTimer") as Timer
+onready var tween := create_tween()
+
 
 var _playing_voice := false
 
 signal message_completed()
 
+func show():
+	tween.tween_property(self, "modulate", Color("ffffff"), 0.15)
+
+
+func hide():
+	tween.tween_property(self, "modulate", Color("00ffffff"), 0.15)
 # Cambia il messaggio con quello di adesso, e fa partire la scrittura a schermo
 func update_message(message: String) -> void:
 	$TalkIndicator.visible = false

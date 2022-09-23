@@ -30,6 +30,8 @@ var _dialogue_status = NODDING
 var _section_id = "start"
 # indica la frase a cui siamo arrivati
 var _message_id = 0
+# tween, si occupa delle transizioni
+var tween
 
 # indica che è iniziato un dialogo
 signal dialogue_started()
@@ -52,6 +54,7 @@ func initializeDialogue() -> void:
 	_dialogue_box = DIALOGUE_SCENE.instance()
 	get_tree().get_root().get_node("main/HUD").add_child(_dialogue_box)
 	_dialogue_box.connect("message_completed", self,"_on_message_completed")
+	_dialogue_box.show()
 
 # aggiorna il messaggio del dialogo e le variabili relative
 func updateDialogue() -> void:
@@ -62,6 +65,7 @@ func updateDialogue() -> void:
 # conclude il dialogo
 func endDialogue() -> void:
 	# elimina la dialogue box
+	_dialogue_box.hide()
 	_dialogue_box.disconnect("message_completed", self,"_on_message_completed")
 	_dialogue_box.queue_free()
 	_dialogue_box = null
@@ -108,6 +112,7 @@ func _on_message_completed() -> void:
 
 # permettiamo l'inizio del dialogo
 func _on_Player_can_talk(interlocutor):
+	tween = create_tween()
 	# quando il giocatore è nei pressi di un NPC questi viene inviato
 	# al dialogue manager e salvato. Funziona anche come bool per capire
 	# se possiamo far partire un dialogo
@@ -115,9 +120,9 @@ func _on_Player_can_talk(interlocutor):
 	# mostriamo l'icona per parlare quando necessario
 	if interlocutor:
 		$TalkIcon.set_position(interlocutor.position + interlocutor.data.bubble_pos)
-		$TalkIcon/Icon.visible = true
+		tween.tween_property($TalkIcon/Icon, "modulate", Color("ffffff"), 0.15)
 	else : 
-		$TalkIcon/Icon.visible = false
+		tween.tween_property($TalkIcon/Icon, "modulate", Color("00ffffff"), 0.15)
 
 # cambiamo l'opzione attuale in una scelta
 func _on_Player_change_choice(direction):

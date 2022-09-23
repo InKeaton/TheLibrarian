@@ -19,6 +19,5 @@ margin_right = -526.0
 margin_bottom = -321.0
 
 [node name="Icon" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 18, 18 )
 frames = SubResource( 1 )
