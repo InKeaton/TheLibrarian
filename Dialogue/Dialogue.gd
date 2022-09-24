@@ -15,13 +15,6 @@ var _playing_voice := false
 
 signal message_completed()
 
-func show():
-	tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color("ffffff"), 0.15)
-
-func hide():
-	tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color("00ffffff"), 0.15)
 # Cambia il messaggio con quello di adesso, e fa partire la scrittura a schermo
 func update_message(message: String) -> void:
 	$TalkIndicator.visible = false

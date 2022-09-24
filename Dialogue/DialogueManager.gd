@@ -54,8 +54,8 @@ func initializeDialogue() -> void:
 	_dialogue_box = DIALOGUE_SCENE.instance()
 	get_tree().get_root().get_node("main/HUD").add_child(_dialogue_box)
 	_dialogue_box.connect("message_completed", self,"_on_message_completed")
-	_dialogue_box.show()
-	yield(get_tree().create_timer(.15), "timeout")
+	# mostra la dialogue box
+	yield(create_tween().tween_property(_dialogue_box, "modulate", Color("ffffff"), 0.15), "finished")
 
 # aggiorna il messaggio del dialogo e le variabili relative
 func updateDialogue() -> void:
@@ -66,8 +66,7 @@ func updateDialogue() -> void:
 # conclude il dialogo
 func endDialogue() -> void:
 	# nasconde la dialogue box
-	_dialogue_box.hide()
-	yield(get_tree().create_timer(.15), "timeout")
+	yield(create_tween().tween_property(_dialogue_box, "modulate", Color("00ffffff"), 0.15), "finished")
 	# elimina la dialogue box
 	_dialogue_box.disconnect("message_completed", self,"_on_message_completed")
 	_dialogue_box.queue_free()
@@ -92,6 +91,8 @@ func initializeChoice() -> void:
 	_choice_box.set_choices(_current_interlocutor._dialogue[_current_interlocutor.data.timeline_id][_section_id]["CHOICE"])
 	# impostiamo lo stato di scelta
 	_dialogue_status = CHOOSING
+	# mostriamo la choicebox
+	yield(create_tween().tween_property(_choice_box, "modulate", Color("ffffff"), 0.1), "finished")
 
 # conferma la scelta
 func chooseOption() -> void:
@@ -100,6 +101,8 @@ func chooseOption() -> void:
 	# resettiamo le variabili
 	_message_id = 0
 	_next_section = -1
+	# nascondiamo la choice box
+	yield(create_tween().tween_property(_choice_box, "modulate", Color("00ffffff"), 0.1), "finished")
 	# distruggiamo la choicebox
 	self.disconnect("choice_changed", _choice_box, "_on_choice_changed")
 	_choice_box.destroy()
@@ -115,7 +118,6 @@ func _on_message_completed() -> void:
 
 # permettiamo l'inizio del dialogo
 func _on_Player_can_talk(interlocutor):
-	tween = get_tree().create_tween()
 	# quando il giocatore è nei pressi di un NPC questi viene inviato
 	# al dialogue manager e salvato. Funziona anche come bool per capire
 	# se possiamo far partire un dialogo
@@ -123,9 +125,9 @@ func _on_Player_can_talk(interlocutor):
 	# mostriamo l'icona per parlare quando necessario
 	if interlocutor:
 		$TalkIcon.set_position(interlocutor.position + interlocutor.data.bubble_pos)
-		tween.tween_property($TalkIcon, "modulate", Color("ffffff"), 0.15)
+		create_tween().tween_property($TalkIcon, "modulate", Color("ffffff"), 0.15)
 	else : 
-		tween.tween_property($TalkIcon, "modulate", Color("00ffffff"), 0.15)
+		create_tween().tween_property($TalkIcon, "modulate", Color("00ffffff"), 0.15)
 
 # cambiamo l'opzione attuale in una scelta
 func _on_Player_change_choice(direction):

@@ -131,7 +131,7 @@ func _on_EyeFrames_timeout():
 
 # in caso si possa parlare, invia l'interlocutore al DialogueManager
 func _on_Speakbox_body_entered(body):
-	if body.is_in_group("Character"):
+	if body.is_in_group("Character") && !_is_in_dialogue:
 		emit_signal("can_talk", body)
 
 # in caso non si possa più parlare, invia null al DialogueManager
