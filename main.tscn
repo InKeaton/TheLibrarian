@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://SaveManager/SaveManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://collectable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Dialogue/DialogueManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Props/Damage.tscn" type="PackedScene" id=7]
 [ext_resource path="res://NPC/Madonna_data.tres" type="Resource" id=8]
@@ -87,6 +88,12 @@ position = Vector2( 905, 103 )
 [node name="DialogueManager" parent="." instance=ExtResource( 6 )]
 
 [node name="SaveManager" parent="." instance=ExtResource( 1 )]
+
+[node name="collectable" parent="." instance=ExtResource( 5 )]
+position = Vector2( 757, 219 )
+
+[node name="collectable2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 760, 303 )
 
 [connection signal="can_talk" from="Player" to="DialogueManager" method="_on_Player_can_talk"]
 [connection signal="change_choice" from="Player" to="DialogueManager" method="_on_Player_change_choice"]

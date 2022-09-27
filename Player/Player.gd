@@ -27,6 +27,8 @@ signal can_talk( interlocutor )
 signal is_answering()
 # segnale che indica il cambio di scelta in un bivio
 signal change_choice(direction)
+# segnale collezionabili
+signal collect()
 
 # F U N Z I O N I ----------------------|
 
@@ -133,6 +135,10 @@ func _on_EyeFrames_timeout():
 func _on_Speakbox_body_entered(body):
 	if body.is_in_group("Character") && !_is_in_dialogue:
 		emit_signal("can_talk", body)
+	if body.is_in_group("collectable"):
+		connect("collect", body, "on_body_collected")
+		emit_signal("collect")
+		
 
 # in caso non si possa più parlare, invia null al DialogueManager
 func _on_Speakbox_body_exited(body):
