@@ -6,17 +6,18 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 18 )
 
-[node name="collectable" type="StaticBody2D" groups=["collectable"]]
+[node name="Collectable" type="StaticBody2D" groups=["collectable"]]
+position = Vector2( 273, 159 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 352, 23, 8, 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
