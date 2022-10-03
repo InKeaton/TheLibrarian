@@ -110,6 +110,4 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[connection signal="body_entered" from="Speakbox" to="." method="_on_Speakbox_body_entered"]
-[connection signal="body_exited" from="Speakbox" to="." method="_on_Speakbox_body_exited"]
 [connection signal="timeout" from="EyeFrames" to="." method="_on_EyeFrames_timeout"]

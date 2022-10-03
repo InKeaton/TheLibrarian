@@ -107,11 +107,14 @@ func computeCollisions():
 func check_nearest_interlocutor():
 	var areas: Array = $Speakbox.get_overlapping_bodies()
 	var shortest_distance : float = INF
-	var next_nearest_interlocutor = null
+	var next_nearest_interlocutor : StaticBody2D = null
 	
 	for area in areas:
 		var distance : float = area.global_position.distance_to(global_position)
-		if distance < shortest_distance:
+		if area.is_in_group("collectable"):
+			connect("collect", area, "on_body_collected")
+			emit_signal("collect")
+		if distance < shortest_distance && area.is_in_group("Character"):
 			shortest_distance = distance
 			next_nearest_interlocutor = area
 	if next_nearest_interlocutor != _nearest_interlocutor or not is_instance_valid(next_nearest_interlocutor):
@@ -149,14 +152,6 @@ func _process(_delta):
 # alla fine degli eyeframes, fa tornare lo sprite normale
 func _on_EyeFrames_timeout():
 	$AnimatedSprite.set_modulate(Color(1, 1, 1))
-
-# in caso si possa parlare, invia l'interlocutore al DialogueManager
-func _on_Speakbox_body_entered(body):
-	pass
-		
-# in caso non si possa più parlare, invia null al DialogueManager
-func _on_Speakbox_body_exited(body):
-	pass
 
 # quando iniza una dialogo, viene comunicato, bloccando il movimento
 func _on_DialogueManager_dialogue_started():
