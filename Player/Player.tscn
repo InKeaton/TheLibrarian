@@ -89,6 +89,8 @@ position = Vector2( 521, 255 )
 script = ExtResource( 2 )
 
 [node name="Speakbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Speakbox"]
 modulate = Color( 0, 0.996078, 0.0392157, 1 )

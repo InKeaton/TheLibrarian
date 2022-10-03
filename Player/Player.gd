@@ -18,6 +18,8 @@ var _health = 500
 var _sprint = 0
 # variabili temporanee per implementare il dialogo
 var _is_in_dialogue = false
+# testing
+var _nearest_interlocutor
 # segnale variazione salute
 signal health_changed( new_health )
 # segnale poter parlare
@@ -101,6 +103,21 @@ func computeCollisions():
 			$AnimatedSprite.set_modulate(Color(1, 1, 1, 0.5))
 			print(_health)
 
+# trova la persona più vicina con cui parlare
+func check_nearest_interlocutor():
+	var areas: Array = $Speakbox.get_overlapping_bodies()
+	var shortest_distance : float = INF
+	var next_nearest_interlocutor = null
+	
+	for area in areas:
+		var distance : float = area.global_position.distance_to(global_position)
+		if distance < shortest_distance:
+			shortest_distance = distance
+			next_nearest_interlocutor = area
+	if next_nearest_interlocutor != _nearest_interlocutor or not is_instance_valid(next_nearest_interlocutor):
+		_nearest_interlocutor = next_nearest_interlocutor
+		emit_signal("can_talk", _nearest_interlocutor)
+
 # funzione principale che avviene una volta a frame
 func _process(_delta):
 	# sezione dedicata al movimento	
@@ -115,6 +132,8 @@ func _process(_delta):
 		move_and_slide(velocity)
 		# consideriamo ogni collisione
 		computeCollisions()
+		# testing: controlla quale è l'interlocutore più vicino
+		check_nearest_interlocutor()
 	# temporaneo: controlla se mettere a schermo intero
 	if Input.is_action_pressed("toggle_fullscreen"): OS.window_fullscreen = !OS.window_fullscreen
 	# comunichiamo al dialogue manager che vogliamo 
@@ -133,17 +152,11 @@ func _on_EyeFrames_timeout():
 
 # in caso si possa parlare, invia l'interlocutore al DialogueManager
 func _on_Speakbox_body_entered(body):
-	if body.is_in_group("Character") && !_is_in_dialogue:
-		emit_signal("can_talk", body)
-	if body.is_in_group("collectable"):
-		connect("collect", body, "on_body_collected")
-		emit_signal("collect")
+	pass
 		
-
 # in caso non si possa più parlare, invia null al DialogueManager
 func _on_Speakbox_body_exited(body):
-	if body.is_in_group("Character"):
-		emit_signal("can_talk", null)
+	pass
 
 # quando iniza una dialogo, viene comunicato, bloccando il movimento
 func _on_DialogueManager_dialogue_started():
