@@ -1,5 +1,5 @@
-{
-    "0" : {
+[
+    {
         "start" :  {
             "MESSAGES" : ["Ciao!", "Come stai?"],
             "CHOICE" : ["Bene, grazie :D", "Eh, come al solito...", "Beh, non molto bene..."]
@@ -7,19 +7,19 @@
 
         "Bene, grazie :D" : {
             "MESSAGES" : ["Oh, meno male"],
-            "SIGNAL" : ["_sta_bene", "0"],
+            "SET_VARS" : ["_sta_bene", "0"],
             "JUMP_TO" : "end"
         },
 
         "Eh, come al solito..." : {
             "MESSAGES" : ["Oh...{p=0.5} Beh, spero che tu stia bene di solito..."],
-            "SIGNAL" : ["_sta_bene", "0"],
+            "SET_VARS" : ["_sta_bene", "0"],
             "JUMP_TO" : "end"
         },
 
         "Beh, non molto bene..." : {
             "MESSAGES" : ["Oh, mi spiace"],
-            "SIGNAL" : ["_sta_bene", "1"],
+            "SET_VARS" : ["_sta_bene", "1"],
             "JUMP_TO" : "end"
         },
 
@@ -29,10 +29,10 @@
         }
     },
 
-    "1" : {
+    {
         "start" : {
             "MESSAGES" : [],
-            "IF" : [["_sta_bene"], ["bene", "male"]] 
+            "CHECK_VARS" : [["_sta_bene"], ["bene", "male"]] 
         },
         "male" : {
             "MESSAGES" : ["Beh, mi spiace che tu sia triste, ma...{p=0.7} non ho altro da dirti...", "[wave amp=50 freq=2] V A  V I A . . .[/wave]"],
@@ -43,4 +43,4 @@
             "END_DIALOGUE" : ["Timeline", "pizza"] 
         }
     }
-}
+]

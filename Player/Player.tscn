@@ -84,7 +84,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 position = Vector2( 521, 255 )
 script = ExtResource( 2 )
 
@@ -107,7 +107,7 @@ animation = "still"
 [node name="EyeFrames" type="Timer" parent="."]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 current = true
 
 [connection signal="timeout" from="EyeFrames" to="." method="_on_EyeFrames_timeout"]

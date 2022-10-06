@@ -1,26 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://SaveManager/SaveManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Collectable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Collectable/Collectable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Dialogue/DialogueManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Props/Damage.tscn" type="PackedScene" id=7]
-[ext_resource path="res://NPC/Madonna_data.tres" type="Resource" id=8]
 [ext_resource path="res://tileset.tres" type="TileSet" id=9]
 [ext_resource path="res://_assets/tileset_librarian_2.png" type="Texture" id=10]
-[ext_resource path="res://_class_prototypes/NPC_data.gd" type="Script" id=11]
+[ext_resource path="res://_sprites/chrctrs/EugeniaStill.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.8333, 8.08333 )
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 11 )
-spritesheet_path = "res://_sprites/chrctrs/EugeniaStill.png"
-dialogue_path = "res://_data/eugenia.json"
-timeline_id = "0"
-bubble_pos = Vector2( -55, -60 )
 
 [node name="main" type="Node"]
 
@@ -70,15 +62,18 @@ texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 337, 49, 46, 46 )
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Madonna" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 183 )
-data = ExtResource( 8 )
+dialogue_path = "res://_data/madonna.json"
+bubble_pos = Vector2( -55, -80 )
 
 [node name="Eugenia" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 443 )
-data = SubResource( 2 )
+texture = ExtResource( 12 )
+dialogue_path = "res://_data/eugenia.json"
+bubble_pos = Vector2( -55, -70 )
 
 [node name="Damage" parent="." instance=ExtResource( 7 )]
 position = Vector2( 905, 103 )

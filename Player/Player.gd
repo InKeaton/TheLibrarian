@@ -29,8 +29,6 @@ signal can_talk( interlocutor )
 signal is_answering()
 # segnale che indica il cambio di scelta in un bivio
 signal change_choice(direction)
-# segnale collezionabili
-signal collect()
 
 # F U N Z I O N I ----------------------|
 
@@ -104,16 +102,14 @@ func computeCollisions():
 			print(_health)
 
 # trova la persona più vicina con cui parlare
-func check_nearest_interlocutor():
+func checkNearestInterlocutor():
 	var areas: Array = $Speakbox.get_overlapping_bodies()
 	var shortest_distance : float = INF
 	var next_nearest_interlocutor : StaticBody2D = null
 	
 	for area in areas:
 		var distance : float = area.global_position.distance_to(global_position)
-		if area.is_in_group("collectable"):
-			connect("collect", area, "on_body_collected")
-			emit_signal("collect")
+		
 		if distance < shortest_distance && area.is_in_group("Character"):
 			shortest_distance = distance
 			next_nearest_interlocutor = area
@@ -136,7 +132,7 @@ func _process(_delta):
 		# consideriamo ogni collisione
 		computeCollisions()
 		# testing: controlla quale è l'interlocutore più vicino
-		check_nearest_interlocutor()
+		checkNearestInterlocutor()
 	# temporaneo: controlla se mettere a schermo intero
 	if Input.is_action_pressed("toggle_fullscreen"): OS.window_fullscreen = !OS.window_fullscreen
 	# comunichiamo al dialogue manager che vogliamo 
@@ -159,7 +155,10 @@ func _on_DialogueManager_dialogue_started():
 	$AnimatedSprite.stop()
 
 # quanto un dialogo è finito, viene comunicato al giocatore, facendo ripartire 
-	# il movimento 
+# il movimento 
 func _on_DialogueManager_dialogue_ended():
 	_is_in_dialogue = false
+
+func _on_Collectable_acquired():
+	print("pizza")
 

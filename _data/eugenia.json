@@ -1,5 +1,5 @@
-{
-    "0" : {
+[
+    {
         "start" :  {
             "MESSAGES" : ["ue.", "Com'è?"],
             "CHOICE" : ["Tutt'apposto fre", "Solita roba"]
@@ -20,11 +20,11 @@
             "END_DIALOGUE" : ["Timeline", "pizza"] 
         }
     },
-
-    "1" : {
+    
+    {
         "start" : {
             "MESSAGES" : ["Non c'ho altro da dirti,{p=0.2} fighetto"],
             "END_DIALOGUE" : ["Timeline", "pizza"] 
         }
     }
-}
+]

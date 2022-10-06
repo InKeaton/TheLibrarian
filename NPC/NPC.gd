@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Sprite
 
 # N P C --------------------|
 
@@ -9,24 +9,27 @@ extends StaticBody2D
 
 # V A R I A B I L I --------------------|
 
-# la risorsa NPC_Data che contiene i dati del personaggio
-export (Resource) var data 
 # dizionario, conterrà il dialogo
 var _dialogue = {}
 
+# path del dialogo
+export (String) var dialogue_path = "res://_data/"
+# timeline, indicatore del progresso nel dialogo
+export (int) var timeline_id = 0
+# posizione dell'indicatore di dialogo
+export (Vector2) var bubble_pos = Vector2()
+
 # F U N Z I O N I --------------------|
 
-# carica i dati del personaggio nel suo NPC_Data
+# carica i dati del personaggio
 func _ready():
-	# carica spritesheet
-	$Sprite.texture = load(data.spritesheet_path)
 	# crea hitbox
-	$Hitbox.shape = RectangleShape2D.new()
+	$Hitbox/CollisionShape2D.shape = RectangleShape2D.new()
 	# imposta dimensioni
-	$Hitbox.shape.extents.x = $Sprite.texture.get_width() / 2
-	$Hitbox.shape.extents.y = $Sprite.texture.get_height() / 2
+	$Hitbox/CollisionShape2D.shape.extents.x = self.texture.get_width() / 2
+	$Hitbox/CollisionShape2D.shape.extents.y = self.texture.get_height() / 2
 	# carica dialogo
 	var jsonfile = File.new()
-	jsonfile.open(data.dialogue_path, File.READ)
+	jsonfile.open(dialogue_path, File.READ)
 	_dialogue = parse_json(jsonfile.get_as_text())  
 	
