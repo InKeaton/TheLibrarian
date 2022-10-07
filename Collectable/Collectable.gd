@@ -20,7 +20,7 @@ func _ready():
 func _on_Collectable_body_entered(body):
 	if body.is_in_group("Player"):
 		$AnimationPlayer.stop()
-		# yield(create_tween().tween_property(self, "modulate", Color("00ffffff"), 0.1), "finished")
+		# yield(create_tween().tween_property(self, "modulate", Color("00ffffff"), 0.05), "finished")
 		connect("got_collected", body, "_on_Collectable_acquired")
 		emit_signal("got_collected")
 		self.queue_free()
