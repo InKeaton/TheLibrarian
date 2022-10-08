@@ -1,4 +1,4 @@
-extends Area2D
+extends Sprite
 
 # C O L L E C T A B L E --------------------|
 
@@ -15,12 +15,13 @@ signal got_collected()
 
 func _ready():
 	$AnimationPlayer.play("idle")
+	pass
 	
 # quando il collezionabile viene toccato dal giocatore, viene eliminato e segnalato al giocatore
 func _on_Collectable_body_entered(body):
 	if body.is_in_group("Player"):
 		$AnimationPlayer.stop()
-		# yield(create_tween().tween_property(self, "modulate", Color("00ffffff"), 0.05), "finished")
+		# yield(create_tween().tween_property(self, "mod#ulate", Color("00ffffff"), 0.05), "finished")
 		connect("got_collected", body, "_on_Collectable_acquired")
 		emit_signal("got_collected")
 		self.queue_free()

@@ -11,15 +11,16 @@ extends KinematicBody2D
 # V A R I A B I L I --------------------|
 
 # velocità
-export var speed = 400
+export var _speed: int = 400
 # vita del giocatore
-var _health = 500
+var _health: int = 500
 # variabile che indica che stiamo sprintando
-var _sprint = 0
+var _sprint: int = 0
 # variabili temporanee per implementare il dialogo
-var _is_in_dialogue = false
+var _is_in_dialogue: bool = false
 # testing
-var _nearest_interlocutor
+var _nearest_interlocutor: StaticBody2D
+
 # segnale variazione salute
 signal health_changed( new_health )
 # segnale poter parlare
@@ -43,7 +44,7 @@ func _ready():
 	emit_signal("health_changed", _health)
 
 # calcola il moviemnto del giocatore, frame per frame
-func computeMovement(velocity):
+func computeMovement(velocity) -> Vector2:
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -58,14 +59,14 @@ func computeMovement(velocity):
 	if Input.is_action_just_released("sprint"):
 		_sprint -= 1
 	# aumenta la velocità se sprintiamo
-	speed = 400 + _sprint * 200
+	_speed = 400 + _sprint * 200
 	# normalizza il movimento in caso di movimento diagonale
 	if velocity.length() > 0: 
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * _speed
 	return velocity
 
 # imposta l'animazione corrente
-func setAnimation(velocity):
+func setAnimation(velocity: Vector2):
 	# seleziona l'animazione corretta
 	if velocity.x > 0:
 		$AnimatedSprite.animation = "sideways"
@@ -104,8 +105,8 @@ func computeCollisions():
 # trova la persona più vicina con cui parlare
 func checkNearestInterlocutor():
 	var areas: Array = $Speakbox.get_overlapping_bodies()
-	var shortest_distance : float = INF
-	var next_nearest_interlocutor : StaticBody2D = null
+	var shortest_distance: float = INF
+	var next_nearest_interlocutor: StaticBody2D = null
 	
 	for area in areas:
 		var distance : float = area.global_position.distance_to(global_position)
@@ -123,15 +124,10 @@ func _process(_delta):
 	if !_is_in_dialogue:
 		# velocity è un vettore che rappresenta la velocità attuale del giocatore
 		var velocity = Vector2.ZERO
-		# calcola il movimento
 		velocity = computeMovement(velocity)
-		# imposta l'animazione corrente
 		setAnimation(velocity)
-		# somma la posizione e gestisce le collisioni con StaticObject2D
 		move_and_slide(velocity)
-		# consideriamo ogni collisione
 		computeCollisions()
-		# testing: controlla quale è l'interlocutore più vicino
 		checkNearestInterlocutor()
 	# temporaneo: controlla se mettere a schermo intero
 	if Input.is_action_pressed("toggle_fullscreen"): OS.window_fullscreen = !OS.window_fullscreen

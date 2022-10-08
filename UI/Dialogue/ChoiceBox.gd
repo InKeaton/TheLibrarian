@@ -1,6 +1,6 @@
 extends Control
 
-const OPTION := preload("res://Dialogue/Button.tscn")
+const OPTION := preload("res://UI/Dialogue/Button.tscn")
 var buttons : Array
 
 # imposta le scelte della choicebox

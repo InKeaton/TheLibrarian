@@ -26,3 +26,5 @@ func _on_DialogueManager_check_if(variables):
 # imposta il valore di una variabile booleana
 func _on_DialogueManager_set_var(var_data):
 	save_data["DIALOGUE_VARS"][var_data[0]] = var_data[1]
+	print(save_data)
+

@@ -11,27 +11,25 @@ extends Node
 # stati del dialogo
 enum { NODDING, LISTENING, CHOOSING }
 # dialogo
-const DIALOGUE_SCENE := preload("res://Dialogue/Dialogue.tscn")
+const DIALOGUE_SCENE := preload("res://UI/Dialogue/Dialogue.tscn")
 # scelta
-const CHOICE_SCENE := preload("res://Dialogue/ChoiceBox.tscn")
+const CHOICE_SCENE := preload("res://UI/Dialogue/ChoiceBox.tscn")
 
 # l'interlocutore del momento, indica se possiamo parlare con qualcuno
-var _current_interlocutor
+var _current_interlocutor: Node
 # la casella di testo
-var _dialogue_box
+var _dialogue_box: Node
 # la casella che contiene le scelte
-var _choice_box
+var _choice_box: Node
 # la variabile che contiene l'indice della prossima scena
 # temporanea per le scelte
-var _next_section = -1
+var _next_section: int = -1
 # indica se si può andare avanti
-var _dialogue_status = NODDING
+var _dialogue_status: int = NODDING
 # indica la sezione corrente
-var _section_id = "start"
+var _section_id: String = "start"
 # indica la frase a cui siamo arrivati
-var _message_id = 0
-# tween, si occupa delle transizioni
-var tween
+var _message_id: int = 0
 
 # indica che è iniziato un dialogo
 signal dialogue_started()
@@ -117,7 +115,7 @@ func _on_message_completed() -> void:
 	_dialogue_status = NODDING
 
 # permettiamo l'inizio del dialogo
-func _on_Player_can_talk(interlocutor):
+func _on_Player_can_talk(interlocutor: Node) -> void:
 	# quando il giocatore è nei pressi di un NPC questi viene inviato
 	# al dialogue manager e salvato. Funziona anche come bool per capire
 	# se possiamo far partire un dialogo
