@@ -40,12 +40,17 @@ tracks/0/keys = {
 }
 
 [node name="Collectable" type="Sprite"]
+position = Vector2( 387, 149 )
 texture = ExtResource( 2 )
 hframes = 4
 region_rect = Rect2( 352, 23, 8, 9 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Hitbox" type="Area2D" parent="." groups=["collectable"]]
+show_behind_parent = true
 collision_layer = 3
 collision_mask = 3
 __meta__ = {

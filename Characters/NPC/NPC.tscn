@@ -4,8 +4,12 @@
 [ext_resource path="res://Characters/NPC/NPC.gd" type="Script" id=2]
 
 [node name="NPC" type="Sprite"]
+position = Vector2( 539, 267 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Hitbox" type="StaticBody2D" parent="." groups=["Character"]]
 show_behind_parent = true

@@ -80,6 +80,7 @@ position = Vector2( 905, 103 )
 
 [node name="Collectable" parent="." instance=ExtResource( 5 )]
 position = Vector2( 713, 267 )
+variable = [ "_libro_raccolto", "1" ]
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
@@ -91,8 +92,8 @@ position = Vector2( 713, 267 )
 [connection signal="change_choice" from="Player" to="DialogueManager" method="_on_Player_change_choice"]
 [connection signal="health_changed" from="Player" to="HUD" method="_on_Player_health_changed"]
 [connection signal="is_answering" from="Player" to="DialogueManager" method="_on_Player_is_answering"]
-[connection signal="check_if" from="DialogueManager" to="SaveManager" method="_on_DialogueManager_check_if"]
+[connection signal="check_vars" from="DialogueManager" to="SaveManager" method="checkVariables"]
 [connection signal="dialogue_ended" from="DialogueManager" to="Player" method="_on_DialogueManager_dialogue_ended"]
 [connection signal="dialogue_started" from="DialogueManager" to="Player" method="_on_DialogueManager_dialogue_started"]
-[connection signal="set_var" from="DialogueManager" to="SaveManager" method="_on_DialogueManager_set_var"]
+[connection signal="set_vars" from="DialogueManager" to="SaveManager" method="setVariables"]
 [connection signal="if_result" from="SaveManager" to="DialogueManager" method="_on_SaveManager_if_result"]

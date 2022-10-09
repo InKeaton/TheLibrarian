@@ -16,15 +16,32 @@
         },
 
         "end" : {
-            "MESSAGES" : ["Ci becchiamo!", "[tornado radius=5 freq=2]Bella raga![/tornado]"],
-            "END_DIALOGUE" : ["Timeline", "pizza"] 
+            "MESSAGES" : ["Hey, hai mica visto il mio libro?", "L'ho perso, e mi servirebbe...", "Vabbè", "Ci becchiamo!"],
+            "END_DIALOGUE" : 1
         }
     },
-    
+
     {
         "start" : {
+            "MESSAGES" : [],
+            "CHECK_VARS" : [["_libro_raccolto"], ["libro_non_preso", "libro_preso"]]
+        },
+
+        "libro_non_preso" : {
             "MESSAGES" : ["Non c'ho altro da dirti,{p=0.2} fighetto"],
-            "END_DIALOGUE" : ["Timeline", "pizza"] 
+            "END_DIALOGUE" : 0 
+        },
+
+        "libro_preso" : {
+            "MESSAGES" : ["Wow, hai trovato il mio libro!", "Grazie mille bro, alla prossima!"],
+            "END_DIALOGUE" : 1
+        }
+    },
+
+    {
+        "start" : {
+            "MESSAGES" : ["Grazie ancora per il libro bro!"],
+            "END_DIALOGUE" : 0
         }
     }
 ]

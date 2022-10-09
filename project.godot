@@ -9,12 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Control",
+"base": "Reference",
 "class": "Dialogue",
 "language": "GDScript",
 "path": "res://UI/Dialogue/Dialogue.gd"
 }, {
-"base": "AudioStreamPlayer",
+"base": "Reference",
 "class": "DialogueVoicePlayer",
 "language": "GDScript",
 "path": "res://UI/Dialogue/DialogueVoicePlayer.gd"
@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Dialogue/Pause.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "PauseCalculator",
 "language": "GDScript",
 "path": "res://UI/Dialogue/PauseCalculator.gd"

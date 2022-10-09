@@ -155,6 +155,5 @@ func _on_DialogueManager_dialogue_started():
 func _on_DialogueManager_dialogue_ended():
 	_is_in_dialogue = false
 
-func _on_Collectable_acquired():
-	print("pizza")
+
 
