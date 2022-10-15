@@ -20,7 +20,6 @@ func _ready():
 # imposta il valore di una variabile booleana
 func setVariables(var_data):
 	save_data["DIALOGUE_VARS"][var_data[0]] = var_data[1]
-	print(save_data)
 
 # controlla il valore di una o più variabili booleane
 func checkVariables(variables):
