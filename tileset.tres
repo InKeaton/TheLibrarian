@@ -1,6 +1,8 @@
-[gd_resource type="TileSet" load_steps=15 format=2]
+[gd_resource type="TileSet" load_steps=18 format=2]
 
-[ext_resource path="res://_assets/tileset_librarian_2.png" type="Texture" id=1]
+[ext_resource path="res://_assets/Senzanome2.png" type="Texture" id=1]
+[ext_resource path="res://_assets/Senzanome.png" type="Texture" id=2]
+[ext_resource path="res://_assets/tileset_librarian_2.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -41,9 +43,12 @@ extents = Vector2( 8.66667, 8.66667 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8, 8 )
+
 [resource]
 0/name = "porta_chiusa"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 262, 0, 32, 32 )
@@ -64,7 +69,7 @@ extents = Vector2( 8, 8 )
 } ]
 0/z_index = 0
 1/name = "tappeto_rosso"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 3 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 288, 48, 48, 48 )
@@ -78,7 +83,7 @@ extents = Vector2( 8, 8 )
 1/shapes = [  ]
 1/z_index = 0
 2/name = "tappeto_blu"
-2/texture = ExtResource( 1 )
+2/texture = ExtResource( 3 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 336, 48, 48, 48 )
@@ -92,7 +97,7 @@ extents = Vector2( 8, 8 )
 2/shapes = [  ]
 2/z_index = 0
 3/name = "pavimento_legno_scuro"
-3/texture = ExtResource( 1 )
+3/texture = ExtResource( 3 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 496, 0, 16, 16 )
@@ -106,7 +111,7 @@ extents = Vector2( 8, 8 )
 3/shapes = [  ]
 3/z_index = 0
 4/name = "pavimento_legno_scuro2"
-4/texture = ExtResource( 1 )
+4/texture = ExtResource( 3 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 496, 0, 16, 16 )
@@ -120,7 +125,7 @@ extents = Vector2( 8, 8 )
 4/shapes = [  ]
 4/z_index = 0
 5/name = "candela_spenta"
-5/texture = ExtResource( 1 )
+5/texture = ExtResource( 3 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 436, 6, 6, 10 )
@@ -134,7 +139,7 @@ extents = Vector2( 8, 8 )
 5/shapes = [  ]
 5/z_index = 0
 6/name = "libreria_1_up"
-6/texture = ExtResource( 1 )
+6/texture = ExtResource( 3 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 384, 0, 16, 16 )
@@ -148,7 +153,7 @@ extents = Vector2( 8, 8 )
 6/shapes = [  ]
 6/z_index = 0
 7/name = "book_open"
-7/texture = ExtResource( 1 )
+7/texture = ExtResource( 3 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 336, 23, 15, 9 )
@@ -162,7 +167,7 @@ extents = Vector2( 8, 8 )
 7/shapes = [  ]
 7/z_index = 0
 8/name = "book_closed"
-8/texture = ExtResource( 1 )
+8/texture = ExtResource( 3 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 352, 23, 8, 9 )
@@ -176,7 +181,7 @@ extents = Vector2( 8, 8 )
 8/shapes = [  ]
 8/z_index = 0
 9/name = "finestra_singola"
-9/texture = ExtResource( 1 )
+9/texture = ExtResource( 3 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 244, 0, 17, 32 )
@@ -190,7 +195,7 @@ extents = Vector2( 8, 8 )
 9/shapes = [  ]
 9/z_index = 0
 10/name = "finestra_doppia"
-10/texture = ExtResource( 1 )
+10/texture = ExtResource( 3 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 212, 0, 31, 32 )
@@ -204,7 +209,7 @@ extents = Vector2( 8, 8 )
 10/shapes = [  ]
 10/z_index = 0
 11/name = "candelabro_spento"
-11/texture = ExtResource( 1 )
+11/texture = ExtResource( 3 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 303, 34, 16, 14 )
@@ -218,7 +223,7 @@ extents = Vector2( 8, 8 )
 11/shapes = [  ]
 11/z_index = 0
 12/name = "ychair_front"
-12/texture = ExtResource( 1 )
+12/texture = ExtResource( 3 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 384, 34, 16, 30 )
@@ -232,7 +237,7 @@ extents = Vector2( 8, 8 )
 12/shapes = [  ]
 12/z_index = 0
 13/name = "rchair_front"
-13/texture = ExtResource( 1 )
+13/texture = ExtResource( 3 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 400, 34, 16, 30 )
@@ -246,7 +251,7 @@ extents = Vector2( 8, 8 )
 13/shapes = [  ]
 13/z_index = 0
 14/name = "bchair_front"
-14/texture = ExtResource( 1 )
+14/texture = ExtResource( 3 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 416, 34, 16, 30 )
@@ -260,7 +265,7 @@ extents = Vector2( 8, 8 )
 14/shapes = [  ]
 14/z_index = 0
 15/name = "gchair_front"
-15/texture = ExtResource( 1 )
+15/texture = ExtResource( 3 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 432, 34, 16, 30 )
@@ -274,7 +279,7 @@ extents = Vector2( 8, 8 )
 15/shapes = [  ]
 15/z_index = 0
 16/name = "ychair_sx_side"
-16/texture = ExtResource( 1 )
+16/texture = ExtResource( 3 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 448, 34, 16, 30 )
@@ -288,7 +293,7 @@ extents = Vector2( 8, 8 )
 16/shapes = [  ]
 16/z_index = 0
 17/name = "ychair_dx_side"
-17/texture = ExtResource( 1 )
+17/texture = ExtResource( 3 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 464, 34, 16, 30 )
@@ -302,7 +307,7 @@ extents = Vector2( 8, 8 )
 17/shapes = [  ]
 17/z_index = 0
 18/name = "bchair_back"
-18/texture = ExtResource( 1 )
+18/texture = ExtResource( 3 )
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 480, 39, 16, 25 )
@@ -316,7 +321,7 @@ extents = Vector2( 8, 8 )
 18/shapes = [  ]
 18/z_index = 0
 19/name = "gchair_back"
-19/texture = ExtResource( 1 )
+19/texture = ExtResource( 3 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 496, 39, 16, 25 )
@@ -330,7 +335,7 @@ extents = Vector2( 8, 8 )
 19/shapes = [  ]
 19/z_index = 0
 20/name = "rchair_back"
-20/texture = ExtResource( 1 )
+20/texture = ExtResource( 3 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 496, 71, 16, 25 )
@@ -344,7 +349,7 @@ extents = Vector2( 8, 8 )
 20/shapes = [  ]
 20/z_index = 0
 21/name = "ychair_back"
-21/texture = ExtResource( 1 )
+21/texture = ExtResource( 3 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( 480, 71, 16, 25 )
@@ -358,7 +363,7 @@ extents = Vector2( 8, 8 )
 21/shapes = [  ]
 21/z_index = 0
 22/name = "gchair_dx_side"
-22/texture = ExtResource( 1 )
+22/texture = ExtResource( 3 )
 22/tex_offset = Vector2( 0, 0 )
 22/modulate = Color( 1, 1, 1, 1 )
 22/region = Rect2( 464, 66, 16, 30 )
@@ -372,7 +377,7 @@ extents = Vector2( 8, 8 )
 22/shapes = [  ]
 22/z_index = 0
 23/name = "gchair_sx_side"
-23/texture = ExtResource( 1 )
+23/texture = ExtResource( 3 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
 23/region = Rect2( 448, 66, 16, 30 )
@@ -386,7 +391,7 @@ extents = Vector2( 8, 8 )
 23/shapes = [  ]
 23/z_index = 0
 24/name = "bchair_dx_side"
-24/texture = ExtResource( 1 )
+24/texture = ExtResource( 3 )
 24/tex_offset = Vector2( 0, 0 )
 24/modulate = Color( 1, 1, 1, 1 )
 24/region = Rect2( 432, 66, 16, 30 )
@@ -400,7 +405,7 @@ extents = Vector2( 8, 8 )
 24/shapes = [  ]
 24/z_index = 0
 25/name = "bchair_sx_side"
-25/texture = ExtResource( 1 )
+25/texture = ExtResource( 3 )
 25/tex_offset = Vector2( 0, 0 )
 25/modulate = Color( 1, 1, 1, 1 )
 25/region = Rect2( 416, 66, 16, 30 )
@@ -414,7 +419,7 @@ extents = Vector2( 8, 8 )
 25/shapes = [  ]
 25/z_index = 0
 26/name = "rchair_dx_side"
-26/texture = ExtResource( 1 )
+26/texture = ExtResource( 3 )
 26/tex_offset = Vector2( 0, 0 )
 26/modulate = Color( 1, 1, 1, 1 )
 26/region = Rect2( 400, 66, 16, 30 )
@@ -428,7 +433,7 @@ extents = Vector2( 8, 8 )
 26/shapes = [  ]
 26/z_index = 0
 27/name = "rchair_sx_side"
-27/texture = ExtResource( 1 )
+27/texture = ExtResource( 3 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
 27/region = Rect2( 384, 66, 16, 30 )
@@ -442,7 +447,7 @@ extents = Vector2( 8, 8 )
 27/shapes = [  ]
 27/z_index = 0
 28/name = "leggio_vuoto"
-28/texture = ExtResource( 1 )
+28/texture = ExtResource( 3 )
 28/tex_offset = Vector2( 0, 0 )
 28/modulate = Color( 1, 1, 1, 1 )
 28/region = Rect2( 256, 44, 16, 20 )
@@ -450,7 +455,7 @@ extents = Vector2( 8, 8 )
 28/occluder_offset = Vector2( 8, 10 )
 28/navigation_offset = Vector2( 8, 10 )
 28/shape_offset = Vector2( 8.00001, 10 )
-28/shape_transform = Transform2D( 1, 2.91038e-11, -2.91038e-11, 1, 8.00001, 10 )
+28/shape_transform = Transform2D( 1, 0, 0, 1, 8.00001, 10 )
 28/shape = SubResource( 12 )
 28/shape_one_way = false
 28/shape_one_way_margin = 1.0
@@ -459,11 +464,11 @@ extents = Vector2( 8, 8 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 12 ),
-"shape_transform": Transform2D( 1, 2.91038e-11, -2.91038e-11, 1, 8.00001, 10 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 8.00001, 10 )
 } ]
 28/z_index = 0
 29/name = "leggio_con_libro"
-29/texture = ExtResource( 1 )
+29/texture = ExtResource( 3 )
 29/tex_offset = Vector2( 0, 0 )
 29/modulate = Color( 1, 1, 1, 1 )
 29/region = Rect2( 272, 44, 16, 20 )
@@ -471,7 +476,7 @@ extents = Vector2( 8, 8 )
 29/occluder_offset = Vector2( 8, 10 )
 29/navigation_offset = Vector2( 8, 10 )
 29/shape_offset = Vector2( 7.99995, 10 )
-29/shape_transform = Transform2D( 1, 2.91038e-11, -2.91038e-11, 1, 7.99995, 10 )
+29/shape_transform = Transform2D( 1, 0, 0, 1, 7.99995, 10 )
 29/shape = SubResource( 13 )
 29/shape_one_way = false
 29/shape_one_way_margin = 1.0
@@ -480,11 +485,11 @@ extents = Vector2( 8, 8 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 13 ),
-"shape_transform": Transform2D( 1, 2.91038e-11, -2.91038e-11, 1, 7.99995, 10 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 7.99995, 10 )
 } ]
 29/z_index = 0
 30/name = "porta_aperta_dx"
-30/texture = ExtResource( 1 )
+30/texture = ExtResource( 3 )
 30/tex_offset = Vector2( 0, 0 )
 30/modulate = Color( 1, 1, 1, 1 )
 30/region = Rect2( 312, 0, 16, 32 )
@@ -505,7 +510,7 @@ extents = Vector2( 8, 8 )
 } ]
 30/z_index = 0
 31/name = "porta_aperta_sx"
-31/texture = ExtResource( 1 )
+31/texture = ExtResource( 3 )
 31/tex_offset = Vector2( 0, 0 )
 31/modulate = Color( 1, 1, 1, 1 )
 31/region = Rect2( 295, 0, 16, 32 )
@@ -526,7 +531,7 @@ extents = Vector2( 8, 8 )
 } ]
 31/z_index = 0
 32/name = "porta_chiusa_dx"
-32/texture = ExtResource( 1 )
+32/texture = ExtResource( 3 )
 32/tex_offset = Vector2( 0, 0 )
 32/modulate = Color( 1, 1, 1, 1 )
 32/region = Rect2( 278, 0, 16, 32 )
@@ -547,7 +552,7 @@ extents = Vector2( 8, 8 )
 } ]
 32/z_index = 0
 33/name = "porta_chiusa_sx"
-33/texture = ExtResource( 1 )
+33/texture = ExtResource( 3 )
 33/tex_offset = Vector2( 0, 0 )
 33/modulate = Color( 1, 1, 1, 1 )
 33/region = Rect2( 262, 0, 16, 32 )
@@ -568,7 +573,7 @@ extents = Vector2( 8, 8 )
 } ]
 33/z_index = 0
 34/name = "libreria_scale_up"
-34/texture = ExtResource( 1 )
+34/texture = ExtResource( 3 )
 34/tex_offset = Vector2( 0, 0 )
 34/modulate = Color( 1, 1, 1, 1 )
 34/region = Rect2( 416, 0, 16, 16 )
@@ -582,7 +587,7 @@ extents = Vector2( 8, 8 )
 34/shapes = [  ]
 34/z_index = 0
 35/name = "tavolo_verticale"
-35/texture = ExtResource( 1 )
+35/texture = ExtResource( 3 )
 35/tex_offset = Vector2( 0, 0 )
 35/modulate = Color( 1, 1, 1, 1 )
 35/region = Rect2( 367, 13, 16, 19 )
@@ -603,7 +608,7 @@ extents = Vector2( 8, 8 )
 } ]
 35/z_index = 0
 36/name = "libreria_scale_down"
-36/texture = ExtResource( 1 )
+36/texture = ExtResource( 3 )
 36/tex_offset = Vector2( 0, 0 )
 36/modulate = Color( 1, 1, 1, 1 )
 36/region = Rect2( 416, 16, 16, 16 )
@@ -624,7 +629,7 @@ extents = Vector2( 8, 8 )
 } ]
 36/z_index = 0
 37/name = "libreria_2_up"
-37/texture = ExtResource( 1 )
+37/texture = ExtResource( 3 )
 37/tex_offset = Vector2( 0, 0 )
 37/modulate = Color( 1, 1, 1, 1 )
 37/region = Rect2( 400, 0, 16, 16 )
@@ -638,7 +643,7 @@ extents = Vector2( 8, 8 )
 37/shapes = [  ]
 37/z_index = 0
 38/name = "libreria_2_down"
-38/texture = ExtResource( 1 )
+38/texture = ExtResource( 3 )
 38/tex_offset = Vector2( 0, 0 )
 38/modulate = Color( 1, 1, 1, 1 )
 38/region = Rect2( 400, 16, 16, 16 )
@@ -659,7 +664,7 @@ extents = Vector2( 8, 8 )
 } ]
 38/z_index = 0
 39/name = "libreria_1_down"
-39/texture = ExtResource( 1 )
+39/texture = ExtResource( 3 )
 39/tex_offset = Vector2( 0, 0 )
 39/modulate = Color( 1, 1, 1, 1 )
 39/region = Rect2( 384, 16, 16, 16 )
@@ -680,7 +685,7 @@ extents = Vector2( 8, 8 )
 } ]
 39/z_index = 0
 40/name = "tavolo_dx"
-40/texture = ExtResource( 1 )
+40/texture = ExtResource( 3 )
 40/tex_offset = Vector2( 0, 0 )
 40/modulate = Color( 1, 1, 1, 1 )
 40/region = Rect2( 466, 16, 16, 16 )
@@ -701,7 +706,7 @@ extents = Vector2( 8, 8 )
 } ]
 40/z_index = 0
 41/name = "tavolo_centro"
-41/texture = ExtResource( 1 )
+41/texture = ExtResource( 3 )
 41/tex_offset = Vector2( 0, 0 )
 41/modulate = Color( 1, 1, 1, 1 )
 41/region = Rect2( 449, 16, 16, 8 )
@@ -722,7 +727,7 @@ extents = Vector2( 8, 8 )
 } ]
 41/z_index = 0
 42/name = "tavolo_sx"
-42/texture = ExtResource( 1 )
+42/texture = ExtResource( 3 )
 42/tex_offset = Vector2( 0, 0 )
 42/modulate = Color( 1, 1, 1, 1 )
 42/region = Rect2( 432, 16, 16, 16 )
@@ -743,7 +748,7 @@ extents = Vector2( 8, 8 )
 } ]
 42/z_index = 0
 43/name = "muro_pietra"
-43/texture = ExtResource( 1 )
+43/texture = ExtResource( 3 )
 43/tex_offset = Vector2( 0, 0 )
 43/modulate = Color( 1, 1, 1, 1 )
 43/region = Rect2( 495, 16, 17, 17 )
@@ -764,7 +769,7 @@ extents = Vector2( 8, 8 )
 } ]
 43/z_index = 0
 44/name = "muro_interno_legno"
-44/texture = ExtResource( 1 )
+44/texture = ExtResource( 3 )
 44/tex_offset = Vector2( 0, 0 )
 44/modulate = Color( 1, 1, 1, 1 )
 44/region = Rect2( 480, 0, 16, 16 )
@@ -784,3 +789,45 @@ extents = Vector2( 8, 8 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 44/z_index = 0
+45/name = "Sprite"
+45/texture = ExtResource( 2 )
+45/tex_offset = Vector2( 0, 0 )
+45/modulate = Color( 1, 1, 1, 1 )
+45/region = Rect2( 0, 0, 16, 16 )
+45/tile_mode = 0
+45/occluder_offset = Vector2( 8, 8 )
+45/navigation_offset = Vector2( 8, 8 )
+45/shape_offset = Vector2( 8, 8 )
+45/shape_transform = Transform2D( 1, 0, 0, 1, 8, 8 )
+45/shape = SubResource( 14 )
+45/shape_one_way = false
+45/shape_one_way_margin = 1.0
+45/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+45/z_index = 0
+46/name = "Sprite2"
+46/texture = ExtResource( 1 )
+46/tex_offset = Vector2( 0, 0 )
+46/modulate = Color( 1, 1, 1, 1 )
+46/region = Rect2( 0, 0, 16, 16 )
+46/tile_mode = 0
+46/occluder_offset = Vector2( 8, 8 )
+46/navigation_offset = Vector2( 8, 8 )
+46/shape_offset = Vector2( 8, 8 )
+46/shape_transform = Transform2D( 1, 0, 0, 1, 8, 8 )
+46/shape = SubResource( 14 )
+46/shape_one_way = false
+46/shape_one_way_margin = 1.0
+46/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+46/z_index = 0
