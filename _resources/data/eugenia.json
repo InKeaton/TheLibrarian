@@ -1,0 +1,52 @@
+[
+    {
+        "BEGINNING" :  {
+            "MESSAGES" : ["ue.", "Com'è?"],
+            "CHOICE" : ["Tutt'apposto fre", "Solita roba"]
+        },
+
+        "Tutt'apposto fre" : {
+            "MESSAGES" : ["Ah meno male..."],
+            "JUMP_TO" : "ENDING"
+        },
+
+        "Solita roba" : {
+            "MESSAGES" : ["Beh, bello schifo"],
+            "JUMP_TO" : "ENDING"
+        },
+
+        "ENDING" : {
+            "MESSAGES" : ["Hey, hai mica visto il mio libro?", "L'ho perso, e mi servirebbe...", "Vabbè", "Ci becchiamo!"],
+            "END_DIALOGUE" : 1
+        }
+    },
+
+    {
+        "BEGINNING" : {
+            "MESSAGES" : [],
+            "CHECK_VARS" : "libro_raccolto"
+        },
+
+        "DEFAULT" : {
+			"MESSAGES" : ["Eh, {p=0.2}quanto vorrei il mio libro..."],
+			"END_DIALOGUE" : 0 
+		},
+
+        "libro_non_preso" : {
+            "MESSAGES" : ["Non c'ho altro da dirti,{p=0.2} fighetto"],
+            "END_DIALOGUE" : 0 
+        },
+
+        "libro_preso" : {
+            "MESSAGES" : ["Wow, hai trovato il mio libro!", "Grazie mille bro, alla prossima!"],
+            "END_DIALOGUE" : 1
+        }
+    },
+
+    {
+        "BEGINNING" : {
+            "MESSAGES" : ["Grazie ancora per il libro bro!"],
+            "END_DIALOGUE" : 0
+        }
+    }
+]

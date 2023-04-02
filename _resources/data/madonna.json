@@ -1,0 +1,50 @@
+[
+	{
+		"BEGINNING" :  {
+			"MESSAGES" : ["Ciao!", "Come stai?"],
+			"CHOICE" : ["Bene, grazie :D", "Eh, come al solito...", "Beh, non molto bene..."]
+		},
+
+		"Bene, grazie :D" : {
+			"MESSAGES" : ["Oh, meno male"],
+			"SET_VARS" : ["_sta_bene", "bene"],
+			"JUMP_TO" : "ENDING"
+		},
+
+		"Eh, come al solito..." : {
+			"MESSAGES" : ["Oh...{p=0.5} Beh, spero che tu stia bene di solito..."],
+			"SET_VARS" : ["_sta_bene", "male"],
+			"JUMP_TO" : "ENDING"
+		},
+
+		"Beh, non molto bene..." : {
+			"MESSAGES" : ["Oh, mi spiace"],
+			"SET_VARS" : ["_sta_bene", "male"],
+			"JUMP_TO" : "ENDING"
+		},
+
+		"ENDING" : {
+			"MESSAGES" : ["Beh, Ora devo andare", "Arrivederci"],
+			"END_DIALOGUE" : 1 
+		}
+	},
+
+	{
+		"BEGINNING" : {
+			"MESSAGES" : [],
+			"CHECK_VARS" : "_sta_bene" 
+		},
+		"male" : {
+			"MESSAGES" : ["Beh, mi spiace che tu sia triste, ma...{p=0.7} non ho altro da dirti...", "[wave amp=50 freq=2] V A  V I A . . .[/wave]"],
+			"END_DIALOGUE" : 0 
+		},
+		"bene" : {
+			"MESSAGES" : ["Beh, puoi essere felice come una Pasqua, ma...{p=0.7} non ho altro da dirti...", "[wave amp=50 freq=2] V A  V I A . . .[/wave]"],
+			"END_DIALOGUE" : 0 
+		},
+		"DEFAULT" : {
+			"MESSAGES" : ["Bro, non so chi tu sia..."],
+			"END_DIALOGUE" : 0 
+		}
+	}
+]

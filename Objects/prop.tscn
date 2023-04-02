@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cun6wpdwbvqwq"]
+
+[ext_resource type="Texture2D" uid="uid://cap37nx5x63hg" path="res://icon.svg" id="1_rikyv"]
+[ext_resource type="Script" path="res://Objects/prop.gd" id="1_ws4eh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58rnm"]
+size = Vector2(128, 126)
+
+[node name="Prop" type="Sprite2D"]
+position = Vector2(407, 302)
+texture = ExtResource("1_rikyv")
+script = ExtResource("1_ws4eh")
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Body" type="StaticBody2D" parent="."]
+show_behind_parent = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="Body"]
+texture_filter = 1
+shape = SubResource("RectangleShape2D_58rnm")
+debug_color = Color(0.741176, 0.462745, 0.105882, 0.419608)
