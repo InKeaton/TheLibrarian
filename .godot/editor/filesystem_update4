@@ -1,0 +1,5 @@
+res://main.tscn
+res://Data/save_manager.gd
+res://_resources/data/madonna.json
+res://Objects/collectible.tscn
+res://_resources/data/eugenia.json

@@ -7,6 +7,10 @@ extends CharacterBody2D
 @onready var speakbox = $Speakbox
 @onready var animation_player = $Sprite/AnimationPlayer
 
+# TO DO
+# + implement a better fullscreen code
+var is_fullscreen = false
+
 signal has_interacted_with(interlocutor: Node)
 
 # T O  D O
@@ -33,6 +37,13 @@ func compute_movement() -> void:
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 		speakbox.rotation_degrees = 180
+	if Input.is_action_just_released("toggle_fullscreen"):
+		if is_fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			is_fullscreen = false
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+			is_fullscreen = true
 	
 	# normalize movement
 	if velocity.length() > 0: 
@@ -57,7 +68,7 @@ func set_animation() -> void:
 
 func check_possible_iterations() -> void:
 	if (Input.is_action_just_released("accept") && speakbox.is_colliding()):
-		var possible_interlocutor : Node = speakbox.get_collider().get_parent()
+		var possible_interlocutor : Node = speakbox.get_collider()
 		if possible_interlocutor.is_in_group("interlocutors"):
 			emit_signal("has_interacted_with", possible_interlocutor)
 			set_process(false)

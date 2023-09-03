@@ -1,9 +1,13 @@
 {
-    "DIALOGUE_VARS" : {
-        
-    },
+	"DIALOGUE_VARS" : {
+		
+	},
+	
+	"COLLECTIBLES" : {
+		
+	},
 
-    "NPC_DATA": {
+	"NPC_DATA": {
 
-    }
+	}
 }

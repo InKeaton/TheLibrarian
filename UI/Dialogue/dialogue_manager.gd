@@ -12,7 +12,7 @@ var _dialogue_status: int = LISTENING
 # Object which we're talking with
 var _interlocutor: Node
 
-# Dialogue section we're gonna act
+# Dialogue we're gonna act
 var _dialogue: Dictionary
 # section of dialogue we are in
 var _section: String
@@ -134,3 +134,5 @@ func _on_save_manager_check_result(result):
 	_message_id = 0
 	update_dialogue()
 	
+func _on_check_vars(variable):
+	pass # Replace with function body.

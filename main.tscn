@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dknevm0d0lyha"]
+[gd_scene load_steps=11 format=3 uid="uid://dknevm0d0lyha"]
 
 [ext_resource type="PackedScene" uid="uid://cwnbgd86iibb3" path="res://Characters/Player/player.tscn" id="1_a7e4d"]
 [ext_resource type="PackedScene" uid="uid://cun6wpdwbvqwq" path="res://Objects/prop.tscn" id="1_u035c"]
@@ -7,8 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://cvyegl13kexob" path="res://_resources/sprites/chrctrs/MadonnaStill.png" id="3_f0sfi"]
 [ext_resource type="PackedScene" uid="uid://dreg86p1nwujc" path="res://UI/Dialogue/dialogue_manager.tscn" id="4_hghbu"]
 [ext_resource type="PackedScene" uid="uid://dfhxd0kvt83n2" path="res://Data/save_manager.tscn" id="6_evhia"]
+[ext_resource type="PackedScene" uid="uid://cl6r58rbssaut" path="res://Objects/collectible.tscn" id="6_gbbm5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvs1k"]
+size = Vector2(128, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbqr1"]
+size = Vector2(128, 127)
 
 [node name="main" type="Node2D"]
+
+[node name="SFONDI" type="Node2D" parent="."]
 
 [node name="PROPS" type="Node2D" parent="."]
 
@@ -19,20 +28,42 @@ _name = "Godot"
 [node name="NPC" type="Node2D" parent="."]
 
 [node name="Madonna" parent="NPC" instance=ExtResource("2_yio0r")]
-texture_filter = 1
-position = Vector2(339, 327)
-texture = ExtResource("3_f0sfi")
+position = Vector2(340, 381)
 _name = "Madonna"
 _dialogue_path = "res://_resources/data/madonna.json"
 
+[node name="Hitbox" parent="NPC/Madonna" index="0"]
+shape = SubResource("RectangleShape2D_pvs1k")
+
+[node name="Sprite" parent="NPC/Madonna" index="1"]
+texture = ExtResource("3_f0sfi")
+
 [node name="Eugenia" parent="NPC" instance=ExtResource("2_yio0r")]
-texture_filter = 1
-position = Vector2(908, 331)
-texture = ExtResource("3_e04fg")
+position = Vector2(985, 349)
 _name = "Eugenia"
 _dialogue_path = "res://_resources/data/eugenia.json"
 
+[node name="Hitbox" parent="NPC/Eugenia" index="0"]
+shape = SubResource("RectangleShape2D_nbqr1")
+
+[node name="Sprite" parent="NPC/Eugenia" index="1"]
+texture = ExtResource("3_e04fg")
+
 [node name="Player" parent="." instance=ExtResource("1_a7e4d")]
+
+[node name="COLLECTIBLES" type="Node2D" parent="."]
+
+[node name="Godot1" parent="COLLECTIBLES" instance=ExtResource("6_gbbm5")]
+position = Vector2(1021, 578)
+_type = "godot"
+
+[node name="Godot2" parent="COLLECTIBLES" instance=ExtResource("6_gbbm5")]
+position = Vector2(668, 662)
+_type = "godot"
+
+[node name="Godot3" parent="COLLECTIBLES" instance=ExtResource("6_gbbm5")]
+position = Vector2(460, 628)
+_type = "godot"
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -46,7 +77,13 @@ layout_mode = 1
 [node name="SaveManager" parent="." instance=ExtResource("6_evhia")]
 
 [connection signal="has_interacted_with" from="Player" to="UI/DialogueManager" method="_on_player_has_interacted_with"]
-[connection signal="check_vars" from="UI/DialogueManager" to="SaveManager" method="_on_dialogue_manager_check_vars"]
+[connection signal="collected" from="COLLECTIBLES/Godot1" to="SaveManager" method="_set_vars"]
+[connection signal="collected" from="COLLECTIBLES/Godot2" to="SaveManager" method="_set_vars"]
+[connection signal="collected" from="COLLECTIBLES/Godot3" to="SaveManager" method="_set_vars"]
+[connection signal="check_vars" from="UI/DialogueManager" to="SaveManager" method="_check_vars"]
 [connection signal="iteraction_ended" from="UI/DialogueManager" to="Player" method="_on_dialogue_manager_iteraction_ended"]
-[connection signal="set_vars" from="UI/DialogueManager" to="SaveManager" method="_on_dialogue_manager_set_vars"]
+[connection signal="set_vars" from="UI/DialogueManager" to="SaveManager" method="_set_vars"]
 [connection signal="check_result" from="SaveManager" to="UI/DialogueManager" method="_on_save_manager_check_result"]
+
+[editable path="NPC/Madonna"]
+[editable path="NPC/Eugenia"]
